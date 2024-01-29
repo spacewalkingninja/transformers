@@ -39,10 +39,10 @@ set pip_reqs_basepath=%model_path_basepath%\requirements.txt
 
 
 :: - Service as NSSM VARS
-set model_service_basepath=%model_path_basepath%\executables\Windows
-set model_service_install_basepath=%model_service_basepath%\descraper.nssm.bat
-set model_start_basepath=%model_service_basepath%\descraper.start.bat
-set service_port=8880
+::set model_service_basepath=%model_path_basepath%\executables\Windows
+::set model_service_install_basepath=%model_service_basepath%\descraper.nssm.bat
+::set model_start_basepath=%model_service_basepath%\descraper.start.bat
+::set service_port=8880
 
 
 :: -- Edit bellow if you're felling lucky ;) -- https://youtu.be/5NV6Rdv1a3I
@@ -224,17 +224,17 @@ ECHO.
 ::start /WAIT %model_service_install%
 
 :: Start Runner Service?
-IF %arg1_bool% EQU 1 GOTO NOSTART
-ECHO %info_h2%Starting Service...%ansi_end% 
-ECHO     Service Start Path: %model_start%
-start /WAIT %model_start%
-call explorer "http://127.0.0.1:%service_port%"
-ECHO %sucess%Instalation Completed!%ansi_end%
-ECHO %info_h2%model name  : %model_name%%ansi_end%
+::IF %arg1_bool% EQU 1 GOTO NOSTART
+::ECHO %info_h2%Starting Service...%ansi_end% 
+::ECHO     Service Start Path: %model_start%
+::start /WAIT %model_start%
+::call explorer "http://127.0.0.1:%service_port%"
+::ECHO %sucess%Instalation Completed!%ansi_end%
+::ECHO %info_h2%model name  : %model_name%%ansi_end%
 :: PAUSE FOR DEBUG
-IF %arg2_bool% EQU 0 exit
-PAUSE
-exit
+::IF %arg2_bool% EQU 0 exit
+::PAUSE
+::exit
 
 :NOSTART
 ECHO %sucess%%model_name% Instalation Completed!%ansi_end%
