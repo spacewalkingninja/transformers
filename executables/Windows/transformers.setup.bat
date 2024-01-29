@@ -22,14 +22,14 @@ exit /B
 :: -- Edit bellow vvvv DeSOTA DEVELOPER EXAMPLe (Python - Tool): miniconda + pip pckgs + python cli script
 
 :: USER PATH
-:: %~dp0 = C:\Users\[username]Desota\Desota_Portables\DeUrlCruncher\executables\windows
+:: %~dp0 = C:\Users\[username]Desota\Portables\DeUrlCruncher\executables\windows
 for %%a in ("%~dp0\..\..\..\..\..") do set "user_path=%%~fa"
 for %%a in ("%~dp0\..\..\..\..\..\..") do set "test_path=%%~fa"
 for %%a in ("%UserProfile%\..") do set "test1_path=%%~fa"
 
 :: Model VARS
 set model_name=Transformers
-set model_path_basepath=Desota\Desota_Portables\%model_name%
+set model_path_basepath=Desota\Portables\%model_name%
 set python_main_basepath=%model_path_basepath%\main.py
 
 :: - Miniconda (virtual environment) Vars
@@ -52,7 +52,7 @@ set miniconda64=https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x8
 set miniconda32=https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86.exe
 
 :: IPUT ARGS
-:: /manualstart :: Start Model Service Manually: %UserProfile%\Desota\Desota_Portables\DeScraper\executables\Windows\descraper.start.bat
+:: /manualstart :: Start Model Service Manually: %UserProfile%\Desota\Portables\DeScraper\executables\Windows\descraper.start.bat
 SET arg1=/manualstart
 :: /debug :: Log everything and require USER interaction
 SET arg2=/debug
