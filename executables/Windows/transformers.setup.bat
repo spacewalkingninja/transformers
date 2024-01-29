@@ -22,14 +22,14 @@ exit /B
 :: -- Edit bellow vvvv DeSOTA DEVELOPER EXAMPLe (Python - Tool): miniconda + pip pckgs + python cli script
 
 :: USER PATH
-:: %~dp0 = C:\Users\[username]Desota\Desota_Models\DeUrlCruncher\executables\windows
+:: %~dp0 = C:\Users\[username]Desota\Desota_Portables\DeUrlCruncher\executables\windows
 for %%a in ("%~dp0\..\..\..\..\..") do set "user_path=%%~fa"
 for %%a in ("%~dp0\..\..\..\..\..\..") do set "test_path=%%~fa"
 for %%a in ("%UserProfile%\..") do set "test1_path=%%~fa"
 
 :: Model VARS
 set model_name=Transformers
-set model_path_basepath=Desota\Desota_Models\%model_name%
+set model_path_basepath=Desota\Desota_Portables\%model_name%
 set python_main_basepath=%model_path_basepath%\main.py
 
 :: - Miniconda (virtual environment) Vars
@@ -52,7 +52,7 @@ set miniconda64=https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x8
 set miniconda32=https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86.exe
 
 :: IPUT ARGS
-:: /manualstart :: Start Model Service Manually: %UserProfile%\Desota\Desota_Models\DeScraper\executables\Windows\descraper.start.bat
+:: /manualstart :: Start Model Service Manually: %UserProfile%\Desota\Desota_Portables\DeScraper\executables\Windows\descraper.start.bat
 SET arg1=/manualstart
 :: /debug :: Log everything and require USER interaction
 SET arg2=/debug
@@ -175,18 +175,19 @@ IF %arg2_bool% EQU 1 GOTO noisy_conda
 
 :: QUIET SETUP
 
-call %conda_path% create --prefix %model_env% python=3.10 -y >NUL 2>NUL
+call %conda_path% create --prefix %model_env% python=3.9 -y >NUL 2>NUL
 call %conda_path% activate %model_env% >NUL 2>NUL
 ECHO %info_h2% Step 4/6 - Installing TORCH & Accessories for Environment...%ansi_end% 
 call conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
 call conda install git
 call conda install conda-forge::transformers
+call conda install "ffmpeg<5" -c conda-forge
 call %conda_path% install pip -y > NUL 2>NUL
 GOTO eo_conda
 
 :: USER SETUP
 :noisy_conda
-call %conda_path% create --prefix %model_env% python=3.10 -y
+call %conda_path% create --prefix %model_env% python=3.9 -y
 call %conda_path% activate %model_env%
 ECHO %info_h2% Step 4/6 - Installing TORCH & Accessories for Environment...%ansi_end% 
 call conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
