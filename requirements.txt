@@ -1,3 +1,4 @@
 scipy
 datasets[audio]
 desota
+requests==2.27.1
